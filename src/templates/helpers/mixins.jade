@@ -1,0 +1,215 @@
+mixin style(href)
+    link(rel="stylesheet", href=href)
+
+mixin script(src)
+    script(src=src)
+
+mixin btnLink(href, style, classes)
+    - var style = (typeof style === 'underfined') ? "default" : style
+    - var classes = (typeof classes === 'underfined') ? "default" : classes
+    +b.A.btn(href=href, class=['_' + style, classes])
+        span
+            block
+
+mixin btn(style, classes)
+    - var style = (typeof style === 'underfined') ? "default" : style
+    - var classes = (typeof classes === 'underfined') ? "default" : classes
+    +b.BUTTON.btn(class=['_' + style, classes])
+        block
+
+mixin itemone(item)
+    h3.title= item.title
+    img(src="img/#{item.img}", alt="#{item.title}")
+    p= item.description
+
+mixin block_btn(buttontitle, buttonstyle)
+    a(src ="#" class="btn btn__corner #{buttonstyle}")= buttontitle
+        SPAN(class="border")
+mixin block_btn_icon(buttontitle, buttonstyle)
+    a(src ="#" class="btn btn_icon #{buttonstyle}")= buttontitle
+        SPAN(class="border")
+mixin block_btn_text(buttontitle, buttonstyle)
+    a(src ="#" class="btn_test #{buttonstyle}")= buttontitle        
+
+//- title, image, content, items, description, button_link, custom
+mixin defblock(items, style)
+        - var subitemsposition = (typeof items.subitemsposition === underfined) ? "default" : items.subitemsposition
+        - var substyle = (typeof items.substyle === underfined) ? "default" : items.substyle
+        - var style = (typeof items.style === underfined) ? "default" : items.style
+        //- var title = (typeof title === 'underfined') ? "default" : title
+        //- var image = (typeof title === 'underfined') ? "default" : image
+        //- var content = (typeof title === 'underfined') ? "default" : content
+        //- var description = (typeof title === 'underfined') ? "default" : description
+        //- var button_link = (typeof title === 'underfined') ? "default" : button_link
+         //- var custom = (typeof title === 'underfined') ? "default" : custom
+        //- var items = (typeof title === 'underfined') ? "default" : custom
+        +b.block(class="#{items.style}")
+            if items.title === underfined               
+            else
+                if items.arrows === underfined              
+                    +e.title
+                        h2= items.title      
+                else
+                    +e.block-with-arrows
+                        +e.title
+                            h2= items.title      
+                        +e.arrows               
+                            .arrow-left
+                            .arrow-right
+            if items.description === underfined
+            else
+                +e.description
+                    p= items.description
+            if items.subitems === underfined                    
+            else
+                +e.content(class="#{substyle}")
+                    each item in items.subitems
+                        +e.subitem(class="#{subitemsposition}")
+                            if item.image === underfined                    
+                            else
+                                +e.subitemimage
+                                    img(src="img/#{item.image}", alt="#{item.title}")
+                            if item.title&&item.href&&item.image&&item.link === underfined
+                            else
+                                +e.subitemcontent
+                                    if item.title === underfined                    
+                                    else
+                                        +e.subitemtitle
+                                            if item.href === underfined                    
+                                            else
+                                                a(href="#{item.href}")
+                                                    h4= item.title                                    
+                                    if item.date === underfined                    
+                                    else
+                                        +e.subitemdate
+                                            p= item.date
+                                    if item.description === underfined                    
+                                    else
+                                        +e.subitemdescription
+                                            p= item.description
+                                    if item.link === underfined
+                                    else
+                                        +e.subitemlink.A(href="#").link.btn-icon_right Подробнее 
+            if items.buttontitle === underfined                    
+            else
+                +e.button
+                    +block_btn(items.buttontitle, items.buttonstyle )        
+
+mixin catblock(items, style)
+        - var subitemsposition = (typeof items.subitemsposition === underfined) ? "default" : items.subitemsposition
+        - var substyle = (typeof items.substyle === underfined) ? "default" : items.substyle
+        //- var title = (typeof title === 'underfined') ? "default" : title
+        //- var image = (typeof title === 'underfined') ? "default" : image
+        //- var content = (typeof title === 'underfined') ? "default" : content
+        //- var description = (typeof title === 'underfined') ? "default" : description
+        //- var button_link = (typeof title === 'underfined') ? "default" : button_link
+         //- var custom = (typeof title === 'underfined') ? "default" : custom
+        //- var items = (typeof title === 'underfined') ? "default" : custom
+        +b.block
+            if items.title === underfined               
+            else
+                +e.title
+                    h2= items.title
+            if items.image === underfined                
+            else
+                +e.image
+                    img(src="img/#{items.image}", alt="#{items.title}")
+            
+            if items.description === underfined
+            else
+                +e.description
+                    p= items.description
+            if items.subitems === underfined                    
+            else
+                +e.content(class="#{substyle}")
+                    each item in items.subitems
+                        +e.subitem(class="#{subitemsposition}")
+                            if item.image === underfined                    
+                            else
+                                +e.subitem__image
+                                    img(src="img/#{item.image}", alt="#{item.title}")
+                            if item.title&&item.href&&item.image&&item.link&&item.specs === underfined
+                            else
+                                +e.subitem__content
+                                    if item.title === underfined                    
+                                    else
+                                        +e.subitem__title
+                                            h3= item.title
+                                    if item.cisterns === underfined                    
+                                    else
+                                        +e.UL.subitem__cisterns
+                                            each cistern in item.cisterns                                            
+                                               li= cistern.name
+                                    if item.description === underfined                    
+                                    else
+                                        +e.subitem__description
+                                            p= item.description
+                                    if item.specs === underfined                    
+                                    else
+                                        +e.UL.subitem__specs
+                                            each spec in item.specs                                            
+                                                +e.LI= spec.value
+                                                    span= spec.subvalue
+                                    if item.chassis === underfined                    
+                                    else
+                                        +e.UL.subitem__chassis 
+                                            each pos in item.chassis                                            
+                                                +e.LI= pos.pos
+                                    if item.brands === underfined                    
+                                    else
+                                        +e.subitem__brands
+                                            each image in item.brands  
+                                                +e.subitem__brand
+                                                    h4.brand_name= image.name                                          
+                                                    IMG.brand_img(src="img/#{image.image}")
+
+mixin sections(items)
+    - var backgroundcolor = (typeof items.backgroundcolor === underfined) ? "default" : items.backgroundcolor
+    - var textposition = (typeof items.textposition === underfined) ? "default" : items.textposition
+    - var background = (typeof items.background === underfined) ? "default" : items.background
+    - var button = (typeof items.button === underfined) ? "default" : items.button
+    - var secondtext = (typeof items.secondtext === underfined) ? "default" : items.secondtext
+    
+    +b.section(class="#{backgroundcolor} #{textposition}" style="background-image: url(#{items.background})")
+        .container-fluid 
+            +e.content        
+                H2.title= items.title
+                .desc!= items.description 
+                if button === underfined                    
+                else                  
+                    .button 
+                        A.btn__corner(class="#{button.style}")= button.title
+                            span.border
+            if secondtext === underfined
+            else 
+                +e.content        
+                    .desc!= items.secondtext
+                    form(action="#") 
+                        input(type="text", placeholder="Телефон")
+                        a(type="submit", class="btn__corner") Получить консультацию
+                            span.border
+mixin consult(items)
+    - var backgroundcolor = (typeof items.backgroundcolor === underfined) ? "default" : items.backgroundcolor
+    - var textposition = (typeof items.textposition === underfined) ? "default" : items.textposition
+    - var background = (typeof items.background === underfined) ? "default" : items.background
+    - var button = (typeof items.button === underfined) ? "default" : items.button
+    - var secondtext = (typeof items.secondtext === underfined) ? "default" : items.secondtext
+    
+    +b.section_consult(class="#{backgroundcolor} #{textposition}" style="background-image: url(#{items.background})")
+        .container-fluid
+            .wrap   
+                +e.content
+                    .desc!= items.description
+                    if button === underfined                    
+                    else                  
+                        .button 
+                            A.btn__corner(class="#{button.style}")= button.title
+                                span.border
+                if secondtext === underfined
+                else 
+                +e.content        
+                    .form__block!= items.secondtext
+                        form(action="#") 
+                            input(type="text", placeholder="Телефон")
+                            a(type="submit", class="btn__corner") Получить консультацию
+                                span.border

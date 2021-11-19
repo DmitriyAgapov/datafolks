@@ -1,0 +1,42 @@
+input[type='checkbox'] {
+    vertical-align: top;
+    margin: 0 0 0 0;
+    width: 16px;
+    height: 16px;
+    + label {
+        cursor: pointer;
+    }
+    &:not(checked) {
+        position: absolute;
+        opacity: 0;
+        + label {
+            position: relative;
+            padding: 0 0 0 24px;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                background-color: #fff;
+                border: 1px solid #dcdcdc;
+                box-sizing: border-box;
+            }
+        }
+    }
+    &:checked {
+        + label {
+            &:before {
+                background-color: #ededee;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 2px;
+                // @include sprite($galka);
+            }
+        }
+    }
+}

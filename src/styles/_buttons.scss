@@ -1,0 +1,543 @@
+@import "./helpers/_helpers";
+
+button {
+    outline: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {}
+
+/* 
+.btn_default {
+    border-width: 1px;
+    border-style: solid;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus {
+        text-decoration: none;
+    }
+} */
+
+.btn_primary {
+    border-width: 1px;
+    border-style: solid;
+    transition: all 0.25s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.btn-three {
+    background-color: #009EE3;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 21px 6px;
+    letter-spacing: 0;
+
+    &:hover {
+        background-color: #ffffff;
+        color: #009EE3;
+        border: 1px solid #009EE3;
+    }
+}
+
+.btn-four {
+    background-color: #009ee3;
+    color: #fff;
+    font-size: 14px;
+    padding: 12px 21px 12px;
+    line-height: 1;
+    width: 100%;
+    border: 1px solid #fff;
+
+    &:hover {
+        background-color: #ffffff;
+        color: #009EE3;
+        border: 1px solid #009EE3;
+    }
+
+}
+
+.btn_link {
+    background: none;
+    border: none;
+    border-bottom: 1px solid;
+    font-weight: 400;
+    padding: 0;
+}
+
+.btn_download {
+    border: none;
+    font-weight: 600;
+    position: relative;
+    padding-left: 42px;
+    padding-top: 8px;
+
+    &::before {
+        content: "\f56d";
+        @include fontAwesome(37px, 100);
+        position: absolute;
+        top: -2px;
+        left: 0;
+    }
+
+    span {
+        border-bottom: 1px solid;
+    }
+}
+
+// КНОПКА В ВЕРХНЕМ РЕГИСТРЕ
+.btn_upper {
+    text-transform: uppercase;
+}
+
+// КНОПКИ БЛОЧНОГО УРОВНЯ – КОТОРЫЕ ЗАНИМАЮТ ПОЛНУЮ ШИРИНУ РОДИТЕЛЬСКОГО ЭЛЕМЕНТА.
+.btn_block {
+    display: block;
+    width: 100%;
+}
+
+// ДЛЯ ПОЛУЧЕНИЯ ДОПОЛНИТЕЛЬНЫХ РАЗМЕРОВ
+.btn_lg {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+}
+
+.btn_sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+}
+
+// ЗАКРУГЛЕННЫЕ КРАЯ
+.btn_radius {
+    border-radius: 4px;
+}
+
+// РАСПОЛОЖЕНИЕ ИКОНКИ В КНОПКЕ (СЛЕВА ИЛИ СПРАВА)
+.btn_icon-left {
+    padding-left: 54px;
+
+    &:before {
+        position: absolute;
+        top: 1px;
+        bottom: 0;
+        left: 18px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.btn_icon-right {
+    padding-right: 54px;
+
+    &:before {
+        position: absolute;
+        top: 1px;
+        bottom: 0;
+        right: 18px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.btn__corner {
+    display: flex;
+    border-bottom: none;
+    margin: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 16px 45px;
+
+    //border: 5px solid #009ee3;
+    font-weight: 700;
+    word-break: keep-all;
+    z-index: 2;
+    letter-spacing: 1px;
+    position: relative;
+    transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: fit-content;
+    text-align: center;
+    border-radius: 0;
+    background: #009ee3;
+
+    &:hover {
+
+        color: white;
+        background: #009ee3;
+
+        .border {
+            background: #009ee3;
+        }
+    }
+
+
+    --notchSize: 10px;
+    --notchSizex: 18px;
+    --notchSizein: 8px;
+    --notchSizexin: 15px;
+
+    color: #009ee3;
+
+
+    clip-path: polygon(0 var(--notchSize),
+        var(--notchSizex) 0,
+        calc(100% - var(--notchSizex)) 0,
+        100% var(--notchSize),
+        100% calc(100% - var(--notchSize)),
+        calc(100% - var(--notchSizex)) 100%,
+        var(--notchSizex) 100%,
+        0 calc(100% - var(--notchSize)));
+
+
+
+    .border {
+        content: '';
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        background: #fff;
+        clip-path: polygon(0 var(--notchSizein),
+                var(--notchSizexin) 0,
+                calc(100% - var(--notchSizexin)) 0,
+                100% var(--notchSize),
+                100% calc(100% - var(--notchSizein)),
+                calc(100% - var(--notchSizexin)) 100%,
+                var(--notchSizexin) 100%,
+                0 calc(100% - var(--notchSizein)));
+        transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: -1;
+        right: 5px;
+        bottom: 5px;
+    }
+
+
+
+
+
+
+}
+
+.btn_orange {
+    background: #FC8356;
+    color: #FC8356;
+
+    .border {
+        background: #fff;
+    }
+
+    &:hover {
+        color: #fff;
+        background: #FC8356;
+
+        .border {
+            background: #FC8356;
+        }
+    }
+}
+
+.btn_test {
+    color: #373939;
+    margin: 0 30px;
+    padding: 16px;
+    display: inline-block;
+    height: 56px;
+
+    border-radius: 3px;
+    font-weight: 700;
+    position: relative;
+    outline: 0;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+
+    &:hover {
+        background-color: #999999;
+        color: #fff;
+        border-top: 1px solid #999999;
+        border-bottom: 1px solid #999999;
+
+        &:before {
+            content: '';
+            @include svgsprite(btn-before-h);
+
+            position: absolute;
+
+            top: -1px;
+            height: 56px;
+            left: -17px;
+        }
+
+        &:after {
+            content: '';
+            @include svgsprite(btn-before-h);
+            transform: rotateY(180deg);
+            position: absolute;
+
+            top: -1px;
+            height: 56px;
+            right: -17px;
+        }
+
+    }
+
+
+    &:before {
+        content: '';
+        @include svgsprite(btn-before);
+
+        position: absolute;
+
+        top: -2px;
+        left: -19px;
+        bottom: 0;
+    }
+
+    &:after {
+        content: '';
+        @include svgsprite(btn-before);
+
+        position: absolute;
+
+        transform: rotateY(180deg);
+        top: -2px;
+        right: -19px;
+        bottom: 0;
+    }
+}
+
+.btn_text {
+    display: flex;
+    border-bottom: none;
+    font-weight: 700;
+    //opacity: 0.75;
+
+    &:hover {
+        //opacity: 1;
+
+        //color: white;
+        background: #999999;
+
+        .border {
+            //background: #009ee3;
+        }
+    }
+
+    font-size: 18px;
+
+    word-break: keep-all;
+    --notchSize: 9px;
+    --notchSizex: 20px;
+    --notchSizein: 8px;
+    --notchSizexin: 18px;
+    cursor: pointer;
+    padding: 16px 18px;
+    background:#999999;
+    //border: 5px solid #009ee3;
+    font-weight: 700;
+    color: #373939;
+
+    z-index: 2;
+    letter-spacing: 1px;
+    clip-path: polygon(0 var(--notchSize),
+        var(--notchSizex) 0,
+        calc(100% - var(--notchSizex)) 0,
+        100% var(--notchSize),
+        100% calc(100% - var(--notchSize)),
+        calc(100% - var(--notchSizex)) 100%,
+        var(--notchSizex) 100%,
+        0 calc(100% - var(--notchSize)));
+    position: relative;
+    transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: fit-content;
+    text-align: center;
+
+
+    .border {
+        content: '';
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        background: #fff;
+        clip-path: polygon(0 var(--notchSizein),
+                var(--notchSizexin) 0,
+                calc(100% - var(--notchSizexin)) 0,
+                100% var(--notchSize),
+                100% calc(100% - var(--notchSizein)),
+                calc(100% - var(--notchSizexin)) 100%,
+                var(--notchSizexin) 100%,
+                0 calc(100% - var(--notchSizein)));
+        transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        z-index: -1;
+        right: 1px;
+        bottom: 1px;
+    }
+}
+
+.btn_icon {
+    display: flex;
+    border-bottom: none;
+    font-weight: 400;
+    opacity: 0.75;
+
+    &:hover {
+        opacity: 1;
+
+        //color: white;
+        background: #848484;
+
+        .border {
+            //background: #009ee3;
+        }
+    }
+
+    font-size: 18px;
+
+    word-break: keep-all;
+    --notchSize: 9px;
+    --notchSizex: 20px;
+    --notchSizein: 8px;
+    --notchSizexin: 18px;
+    cursor: pointer;
+    padding: 16px 18px;
+    background:#999999;
+    //border: 5px solid #009ee3;
+    font-weight: 700;
+    color: #999999;
+
+    z-index: 2;
+    letter-spacing: 1px;
+    clip-path: polygon(0 var(--notchSize),
+        var(--notchSizex) 0,
+        calc(100% - var(--notchSizex)) 0,
+        100% var(--notchSize),
+        100% calc(100% - var(--notchSize)),
+        calc(100% - var(--notchSizex)) 100%,
+        var(--notchSizex) 100%,
+        0 calc(100% - var(--notchSize)));
+    position: relative;
+    transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: fit-content;
+    text-align: center;
+
+
+    .border {
+        content: '';
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        background: #fff;
+        clip-path: polygon(0 var(--notchSizein),
+                var(--notchSizexin) 0,
+                calc(100% - var(--notchSizexin)) 0,
+                100% var(--notchSize),
+                100% calc(100% - var(--notchSizein)),
+                calc(100% - var(--notchSizexin)) 100%,
+                var(--notchSizexin) 100%,
+                0 calc(100% - var(--notchSizein)));
+        transition: background 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        z-index: -1;
+        right: 2px;
+        bottom: 2px;
+    }
+}
+
+.btn_icon_share {
+    opacity: 1;
+    color: #000;
+    font-weight: 400;
+
+    @include max-screen(767px) {
+        width: 100%;
+        justify-content: center;
+        max-width: 450px;
+        font-weight: 400;
+        color: #000;
+    }
+
+    @include min-screen(768px) {
+        font-size: 0;
+    }
+
+
+}
+
+.btn_icon_share:before {
+    content: '';
+    @include svgsprite(icon-share);
+    margin-right: 1rem;
+
+    @include min-screen(768px) {
+        margin-right: -8px;
+        font-size: initial;
+    }
+}
+
+.btn_icon_print,
+.btn_icon_pdf {
+    @include max-screen(1023px) {
+        display: none;
+    }
+}
+
+.btn_icon_print:before {
+    content: '';
+    @include svgsprite(icon-print);
+}
+
+.btn_icon_pdf:before {
+    content: '';
+    @include svgsprite(icon-pdf);
+}
+
+.centered {
+    margin: auto;
+}
+
+.big {
+    padding: 21px 75px;
+    //font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.inverse {
+    background: white;
+    color: white;
+
+    .border {
+        background: #009ee3;
+    }
+
+    &:hover {
+        color: #009ee3;
+        background: none;
+
+        .border {
+            background: white;
+        }
+    }
+}
+
+.btn-m {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}

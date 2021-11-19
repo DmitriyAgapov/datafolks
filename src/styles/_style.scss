@@ -1,0 +1,178 @@
+.promo {
+    margin-bottom: $marginBottom;
+}
+
+.noscroll {}
+
+.gulp-pages {
+    @include max-screen(991px) {
+        display: none;
+    }
+}
+
+.table-wrapper {
+    overflow: auto;
+}
+
+a.lightgallery {
+    border-bottom: none;
+}
+
+ul.slick-dots li button,
+.slick-slide,
+.slick-arrow {
+    outline: none;
+}
+
+.margin {
+    margin: map-get($margin, block);
+}
+
+.margin-small {
+    margin: map-get($margin, block2);
+}
+
+.padding {
+    padding: $padding;
+}
+
+.padding__title {
+    padding-top: 50px;
+}
+
+
+
+.container-fluid {
+    /* max-width: 1620px; */
+    max-width: calc(100% - 36px + 17px);
+    margin-left: auto;
+    margin-right: auto;
+
+    //padding: 0 1rem;
+    @include min-screen(768px) {
+        max-width: calc(100% - 60px + 17px);
+    }
+
+    @include min-screen(1024px) {
+        max-width: calc(100% - 120px + 17px);
+    }
+
+
+    /*@include min-screen(1280px) {
+        max-width: calc(100% - 6rem);
+        //padding: 0 1rem;
+    }*/
+    @include min-screen(1366px) {
+        max-width: calc(100% - 200px);
+
+    }
+
+    @include min-screen(1536px) {
+        max-width: calc(100% - 300px);
+
+    }
+
+    /*  @include max-screen(1654px) 
+    @include max-screen(1375px) 
+    991 / бургер меню (моб версия)*/
+}
+
+.page-title {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.date-news {
+    font-size: 25px;
+    color: #fff;
+    background-color: #969696;
+    padding: 18px 20px 20px 20px;
+    margin-right: 23px;
+}
+
+.btn-link {
+    font-weight: bold;
+    font-size: map-get($fontSize, normaPlus);
+    border-bottom: 1px solid $color-link;
+    color: $color-link;
+}
+
+.btn-icon {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: map-get($fontSize, normaPlus);
+}
+
+.btn-icon_left {
+    &:before {
+        content: "";
+        @include svgsprite(arrow-left);
+        margin-right: 10px;
+    }
+
+    &:hover {
+        border-bottom-color: #3C3C3C;
+
+        &:before {
+            content: "";
+            @include svgsprite(arrow-left-a);
+            margin-right: 10px;
+        }
+    }
+}
+
+.link {
+    color: #3C3C3C;
+}
+
+.btn-icon_right {
+    &:after {
+        content: "";
+        @include svgsprite(arrow-right);
+        margin-left: 10px;
+    }
+
+    &:hover {
+        border-bottom-color: #3C3C3C;
+
+        &:after {
+            content: "";
+            @include svgsprite(arrow-right);
+            margin-right: 10px;
+        }
+    }
+}
+
+table div {
+    padding-bottom: 5px;
+}
+
+table td,
+table th {
+    width: 52.2%;
+    position: relative;
+}
+
+table td div {
+    z-index: 1;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    padding-right: 10px;
+}
+
+table td {
+    &:first-child {
+        &::after {
+            content: "\A0";
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 10px;
+            border-bottom: 2px dotted #AEAEAE;
+        }
+    }
+}
