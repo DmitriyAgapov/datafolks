@@ -8,76 +8,30 @@ block variables
 
 block styles
     //+style("http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css")
-    +style('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css')
-    //- +style('https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.css')
-    +style('https://cdn.jsdelivr.net/npm/lightgallery/dist/css/lightgallery.min.css')
     +style('css/common.min.css')        // базовые стили
-    //-+style('css/lightgallery.css')      // фотогаллерея
-    +style('css/hd.min.css')            // Шапка
-    +style('css/nv-menu.min.css')       // Навигация
-    +style('css/search.min.css')        // Поиск
-    +style('css/bc.min.css')            // Хлебные крошки
-    +style('css/nd-page.min.css')       // Текстовая страница
-    +style('css/gallery.min.css')       // Галлерея
-    +style('css/ft.min.css')            // Подвал
-    +style('css/intro.min.css')         // Блок Интро в шапке
-    +style('css/section.min.css')       // Блок табов
-    +style('css/tabs.min.css')          // Блок табов
-    +style('css/partners.min.css')      // Блок партнеры
-    +style('css/section-press.min.css')   // Блок Пресс-центр
-    +style('css/section-tehnik.min.css')    // Блок нашу технику используют
-    +style('css/dealers.min.css')       // Блок Дилеры рядом с вsами
-    +style('css/hd-m.min.css')          // Текстовая страница
-    +style('css/bc-m.min.css')          // Текстовая страница
-    +style('css/burger.min.css')        // Текстовая страница
-    +style('css/logo-m.min.css')        // Текстовая страница
-    +style('css/menu-m-panel.min.css')  // Текстовая страница
-    +style('css/nv-m.min.css')          // Текстовая страница
-    +style('css/phone-m-btn.min.css')   // Текстовая страница
-    +style('css/search-m.min.css')      // Текстовая страница
-    +style('css/search-m.min.css')  // Текстовая страница
-    +style('css/close.min.css')         // Подвал
-    +style('css/nv-m-menu.min.css')     // Подвал
-    +style('css/arrows.min.css') //Стрелки
+
 
 block scripts
-    +script('https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js')
     //+script('https://cdn.jsdelivr.net/npm/jquery-once@2.2.0/jquery.once.min.js')
-    +script("https://code.jquery.com/ui/1.11.4/jquery-ui.min.js")
-    +script('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js')
-    //+script('https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js')
-    +script('https://cdn.jsdelivr.net/npm/lightgallery/dist/js/lightgallery-all.min.js')
-    //+script('https://cdn.jsdelivr.net/npm/inputmask/dist/min/jquery.inputmask.bundle.min.js')
-    //-+script('js/lightgallery.js')       // фотогаллерея
-    +script('js/search.min.js')         // Поиск
-    +script('js/tabs.min.js')         // Вкладки
-    +script('js/presscenter.min.js')         // Пресс-центр свайп
-    +script('js/burger.min.js')         // Поиск
-    +script('js/menu-m-panel.min.js')         // Поиск
-    +script('js/theme.min.js')          // кастомный файл
-    +script('js/close.min.js')          // кастомный файл
 
 block content
-    .wrapper
-        .head.index-page
-            include ../components/hd/hd/hd
-            include ../components/hd-m/hd-m/hd-m
-            .container-fluid
-                include ../components/intro/intro
-        .section.section_tab 
-            .container-fluid
-                include ../components/section/section
-        .section.section_partners
-            .container-fluid
-                include ../components/partners/partners  
-            //include ../components/section/section-partners
-        .section.section_press.angleleft-gray.angleright-gray 
-            .container-fluid                
-                include ../components/section-press/section-press-index
-        .section.angleleft-gray.angleright-white
-            .container-fluid
-                include ../components/section-tehnik/section-tehnik        
-       
-        include ../components/dealers/dealers 
+    .container
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+            a.navbar-brand(href='#')
+                | CompanyName< /a>
+            #navbarSupportedContent.collapse.navbar-collapse
+                a.navbar-brand(href='#')
+                ul.navbar-nav.ml-auto
+                    a.navbar-brand(href='#')
+                    li.nav-item
+                        a.navbar-brand(href='#')
+                        a.nav-link(href='#')  Home
+                    li.nav-item
+                        a.nav-link(href='#')  About
+                    li.nav-item
+                        a.nav-link(href='#')  Products
+                    li.nav-item
+                        a.nav-link(href='#')  Contact
 
-    include ../components/ft/ft
+    .container
+        h1.h1 test

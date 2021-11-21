@@ -1,8 +1,8 @@
 "use strict";
 
-import gulp from "gulp";
-import favicons from "gulp-favicons";
-import debug from "gulp-debug";
+const gulp = require("gulp");
+const favicons = require("gulp-favicons");
+const debug = require("gulp-debug");
 
 gulp.task("favicon", () => {
     return gulp.src('./src/img/favicon/*.{jpg,jpeg,png,gif,tiff}')

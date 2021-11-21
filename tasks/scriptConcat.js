@@ -1,24 +1,23 @@
-"use strict";
+const gulp = require( "gulp");
+const plumber = require( 'gulp-plumber');
+const errorHandler = require( 'gulp-plumber-error-handler');
+const cached = require( 'gulp-cached');
+const changed = require( 'gulp-changed');
+const uglify = require( 'gulp-uglify');
+const rename = require( "gulp-rename");
+const debug = require( "gulp-debug");
+const concat = require( 'gulp-concat');
 
-import gulp from "gulp";
-import plumber from 'gulp-plumber';
-import errorHandler from 'gulp-plumber-error-handler';
-import cached from 'gulp-cached';
-import changed from 'gulp-changed';
-import uglify from 'gulp-uglify';
-import rename from "gulp-rename";
-import debug from "gulp-debug";
-import concat from 'gulp-concat';
 
-gulp.task("scriptConcat", () => {
-    return gulp.src(['src/scripts/plugins.js', 'src/components/**/*.js', 'src/scripts/theme.js'])
-        .pipe(uglify())
-        .pipe(concat('theme-concat.js'))
-        .pipe(rename({
-            suffix: ".min"
-        }))
-        .pipe(gulp.dest('dist/js'))
-        .pipe(debug({
-            "title": "JS files"
-        }));
-});
+    gulp.task("scriptConcat", () => {
+        return gulp.src(['src/scripts/plugins.js', 'src/components/**/*.js', 'src/scripts/theme.js'])
+            .pipe(uglify())
+            .pipe(concat('theme-concat.js'))
+            .pipe(rename({
+                suffix: ".min"
+            }))
+            .pipe(gulp.dest('dist/js'))
+            .pipe(debug({
+                "title": "JS files"
+            }));
+    })

@@ -1,12 +1,13 @@
 "use strict";
 
-import gulp from "gulp";
-import sass from "gulp-sass";
-import groupmedia from "gulp-group-css-media-queries";
-import autoprefixer from "gulp-autoprefixer";
-import mincss from "gulp-clean-css";
-import rename from "gulp-rename";
-import concat from 'gulp-concat';
+const gulp = require( "gulp");
+const sass = require('gulp-sass')(require('node-sass'));
+const groupmedia = require( "gulp-group-css-media-queries");
+const autoprefixer = require( "gulp-autoprefixer");
+const mincss = require( "gulp-clean-css");
+const rename = require( "gulp-rename");
+const concat = require( 'gulp-concat');
+
 
 gulp.task("styleConcat", () => {
     return gulp.src([
@@ -44,4 +45,4 @@ gulp.task("styleConcat", () => {
             suffix: ".min"
         }))
         .pipe(gulp.dest('dist/css'))
-});
+})

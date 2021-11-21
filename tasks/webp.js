@@ -1,5 +1,3 @@
-"use strict";
-
 import gulp from "gulp";
 import imageminWebp from "imagemin-webp";
 import webp from "gulp-webp";

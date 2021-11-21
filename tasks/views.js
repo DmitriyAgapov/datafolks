@@ -1,43 +1,44 @@
-"use strict";
+const gulp = require( "gulp");
+const gulpif = require( "gulp-if");
+const plumber = require( "gulp-plumber");
+const jade = require( "gulp-jade");
+// const prettify = require( 'gulp-jsbeautifier');
+const inheritance = require( 'gulp-jade-inheritance');
+const cached = require( 'gulp-cached');
+const filter = require( 'gulp-filter');
+const rename = require( 'gulp-rename');
+// const debug = require( "gulp-debug");
+const errorHandler = require( 'gulp-plumber-error-handler');
+// const changed = require( 'gulp-changed');
+// const notify = require( "gulp-notify");
+// const useref = require( 'gulp-useref');
+// const csso = require( 'gulp-csso');
+// const replace = require( "gulp-replace");
+const browsersync = require( "browser-sync");
+const yargs = require( "yargs");
+// function views(cb) {
+//     cb(
 
-import gulp from "gulp";
-import gulpif from "gulp-if";
-import plumber from "gulp-plumber";
-import jade from "gulp-jade";
-// import prettify from 'gulp-jsbeautifier';
-import inheritance from 'gulp-jade-inheritance';
-import cached from 'gulp-cached';
-import filter from 'gulp-filter';
-import rename from 'gulp-rename';
-// import debug from "gulp-debug";
-import errorHandler from 'gulp-plumber-error-handler';
-// import changed from 'gulp-changed';
-// import notify from "gulp-notify";
-// import useref from 'gulp-useref';
-// import csso from 'gulp-csso';
-// import replace from "gulp-replace";
-import browsersync from "browser-sync";
-import yargs from "yargs";
-
-gulp.task("views", () => {
-    return gulp.src('src/**/*.jade')
-        .pipe(plumber({
-            errorHandler: errorHandler(`Ошибка в \'template\' task`)
-        }))
-        .pipe(cached('jade'))
-        .pipe(gulpif(global.isWatching, inheritance({
-            basedir: 'src'
-        })))
-        .pipe(filter(function(file) {
-            return /src[\\\/]templates/.test(file.path) && !/src[\\\/]templates[\\\/]layout[\\\/]default[\.]jade/.test(file.path) && !/src[\\\/]templates[\\\/]helpers/.test(file.path);
-        }))
-        .pipe(jade({
-            basedir: 'src',
-            pretty: true
-        }))
-        .pipe(rename({
-            dirname: '.'
-        }))
-        .pipe(gulp.dest('dist'))
-    // .pipe(browsersync.stream());
-});
+    gulp.task("views", () => {
+        return gulp.src('src/**/*.jade')
+            .pipe(plumber({
+                errorHandler: errorHandler(`Ошибка в \'template\' task`)
+            }))
+            .pipe(cached('jade'))
+            .pipe(gulpif(global.isWatching, inheritance({
+                basedir: 'src'
+            })))
+            .pipe(filter(function(file) {
+                return /src[\\\/]templates/.test(file.path) && !/src[\\\/]templates[\\\/]layout[\\\/]default[\.]jade/.test(file.path) && !/src[\\\/]templates[\\\/]helpers/.test(file.path);
+            }))
+            .pipe(jade({
+                basedir: 'src',
+                pretty: true
+            }))
+            .pipe(rename({
+                dirname: '.'
+            }))
+            .pipe(gulp.dest('dist/'))
+        // .pipe(browsersync.stream());
+    })
+// module.exports = views
